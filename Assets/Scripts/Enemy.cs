@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float Speed = 0.1f;
-    // Start is called before the first frame update
+    public float Speed = 0.04f;
+
     void Start()
     {
         
@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player"))
         {
-            Debug.Log("Player");
             Destroy(collision.gameObject);
         }
     }

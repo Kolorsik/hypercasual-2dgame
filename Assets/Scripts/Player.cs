@@ -18,7 +18,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        string collisionName = collision.gameObject.name;
+        if (collisionName.Contains("Goal"))
+        {
+            Score.UserScore++;
+            if (collisionName.Equals("DownGoal"))
+            {
+                collision.gameObject.SetActive(false);
+                Vector2 v2p = new Vector2(Random.Range(-1.7f, 1.7f), -3.1f);
+                collision.gameObject.transform.position = v2p;
+                collision.gameObject.SetActive(true);
+            }
+        }
     }
 
 

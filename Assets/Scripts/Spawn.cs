@@ -8,26 +8,27 @@ public class Spawn : MonoBehaviour
     public GameObject Enemy;
     public static int CountEnemy;
 
+    private float Timer;
+
 
     void Start()
     {
-        
+        Timer = SpawnRate;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (CountEnemy < 5)
+        Timer -= Time.deltaTime;
+        if (Timer <= 0f)
         {
-            StartCoroutine(SpawnEnemy());
-        }
-    }
+            Vector2 v2s = Enemy.transform.localScale;
+            v2s.x = Random.Range(1f, 1.6f);
+            Enemy.transform.localScale = v2s;
 
-    IEnumerator SpawnEnemy()
-    {
-        Vector2 v2 = new Vector2(-4.5f, Random.Range(-1.5f, 1.5f));
-        Instantiate(Enemy, v2, Quaternion.identity);
-        CountEnemy++;
-        yield return new WaitForSeconds(SpawnRate);
+            Vector2 v2p = new Vector2(-4.5f, Random.Range(-1.5f, 1.5f));
+            Instantiate(Enemy, v2p, Quaternion.identity);
+            Timer = SpawnRate;
+        }
     }
 }

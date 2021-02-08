@@ -15,7 +15,6 @@ public class Destroy : MonoBehaviour
         if (collision.gameObject.name.Contains("Enemy"))
         {
             Destroy(collision.gameObject);
-            Spawn.CountEnemy--;
         }
     }
 
