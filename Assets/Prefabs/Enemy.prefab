@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5418696089281581483}
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: -4.08, y: 1.36, z: 0}
-  m_LocalScale: {x: 1.2135844, y: 1.5, z: 0}
+  m_LocalScale: {x: 1.3098931, y: 1.5, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -123,8 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.04
-  DeadParticles: {fileID: 8900465562052622798, guid: 5f9d93575aab83744b0ffb2c9337af2d,
-    type: 3}
 --- !u!50 &5418696089281581486
 Rigidbody2D:
   serializedVersion: 4

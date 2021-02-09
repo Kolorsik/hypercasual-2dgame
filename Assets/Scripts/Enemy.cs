@@ -1,26 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public float Speed = 0.04f;
-    public GameObject DeadParticles;
-
-    void Start()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name.Equals("Player"))
-        {
-            GameObject deadParticle = Instantiate(DeadParticles, collision.transform.position, Quaternion.identity);
-            deadParticle.GetComponent<ParticleSystem>().Play();
-            Destroy(collision.gameObject);
-        }
-    }
 
     // Update is called once per frame
     void FixedUpdate()

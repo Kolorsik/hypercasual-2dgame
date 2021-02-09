@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Global : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class Global : MonoBehaviour
     void Start()
     {
         
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     // Update is called once per frame
