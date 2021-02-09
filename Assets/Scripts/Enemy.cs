@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float Speed = 0.04f;
+    public GameObject DeadParticles;
 
     void Start()
     {
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player"))
         {
+            GameObject deadParticle = Instantiate(DeadParticles, collision.transform.position, Quaternion.identity);
+            deadParticle.GetComponent<ParticleSystem>().Play();
             Destroy(collision.gameObject);
         }
     }

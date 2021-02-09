@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        TopGoal.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), 3.2f);
+        DownGoal.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), -3.2f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,13 +23,26 @@ public class Player : MonoBehaviour
         if (collisionName.Contains("Goal"))
         {
             Score.UserScore++;
+            
             if (collisionName.Equals("DownGoal"))
             {
-                collision.gameObject.SetActive(false);
-                Vector2 v2p = new Vector2(Random.Range(-1.7f, 1.7f), -3.1f);
-                collision.gameObject.transform.position = v2p;
-                collision.gameObject.SetActive(true);
+                DownGoal.SetActive(false);
+
+                TopGoal.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), 3.2f); 
+                TopGoal.SetActive(true);
             }
+            else
+            {
+                TopGoal.SetActive(false);
+
+                DownGoal.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), -3.2f);
+                DownGoal.SetActive(true);
+            }
+        }
+
+        if (collisionName.Contains("Platform"))
+        {
+            Change();   
         }
     }
 
