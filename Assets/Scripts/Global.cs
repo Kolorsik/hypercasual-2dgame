@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Global : MonoBehaviour
 {
     public GameObject ShopPanel;
     public GameObject ProfilePanel;
+    public Text AvailableScoreText;
+    public Text TotalScoreText;
 
     private bool IsPaused = false;
     private Animator ShopPanelAnimator;
     private Animator ProfilePanelAnimator;
+
     void Start()
     {
         ShopPanelAnimator = ShopPanel.GetComponent<Animator>();
@@ -29,6 +33,9 @@ public class Global : MonoBehaviour
 
     public void OpenProfilePanel()
     {
+        PlayerData pd = SaveSystem.LoadPlayer();
+        AvailableScoreText.text = "Доступные очки: " + pd.AvailableScore.ToString();
+        TotalScoreText.text = "Всего заработано очков: " + pd.TotalScore.ToString();
         ProfilePanelAnimator.Play("ProfilePanelIn");
     }
 

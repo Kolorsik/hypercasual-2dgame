@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
 
     private Text EndScoreText;
     private Animator EndBackgroundAnimator;
+    private Animator GameScoreAnimator;
 
     private bool Check;
 
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         DownGoal.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), -3.2f);
         EndScoreText = EndScore.GetComponent<Text>();
         EndBackgroundAnimator = EndBackground.GetComponent<Animator>();
+        GameScoreAnimator = GameScore.GetComponent<Animator>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -66,12 +69,13 @@ public class Player : MonoBehaviour
             EndBackground.SetActive(true);
             EndBackgroundAnimator.Play("EndBackgroundIn");
             EndScoreText.text = "Твои очки: " + Score.UserScore.ToString();
+            SaveSystem.SaveScore(Score.UserScore);
         }
 
         if (collisionName.Contains("Goal"))
         {
             Score.UserScore++;
-            
+            GameScoreAnimator.Play("AddScore");
             if (collisionName.Equals("DownGoal"))
             {
                 DownGoal.SetActive(false);
