@@ -27,7 +27,26 @@ public class Spawn : MonoBehaviour
             Enemy.transform.localScale = v2s;
 
             Vector2 v2p = new Vector2(-4.5f, Random.Range(-1.5f, 1.5f));
-            Instantiate(Enemy, v2p, Quaternion.identity);
+            GameObject tempEnemy = Instantiate(Enemy, v2p, Quaternion.identity);
+            switch (Random.Range(1, 4))
+            {
+                case 1:
+                    {
+                        tempEnemy.AddComponent<EnemyRotation>();
+                        break;
+                    }
+                case 2:
+                    {
+                        tempEnemy.AddComponent<EnemySlowRotation>();
+                        break;
+                    }
+                case 3:
+                    {
+                        tempEnemy.AddComponent<EnemyIdle>();
+                        break;
+                    }
+            }
+            tempEnemy.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
             Timer = SpawnRate;
         }
     }

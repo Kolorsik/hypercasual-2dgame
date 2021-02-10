@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     public GameObject GameScore;
     public GameObject EndScore;
     public GameObject EndBackground;
+    public GameObject TapButton;
 
     private Text EndScoreText;
     private Animator EndBackgroundAnimator;
-    private Animator EndScoreAnimator;
 
     private bool Check;
 
@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
         DownGoal.transform.position = new Vector2(Random.Range(-1.7f, 1.7f), -3.2f);
         EndScoreText = EndScore.GetComponent<Text>();
         EndBackgroundAnimator = EndBackground.GetComponent<Animator>();
-        EndScoreAnimator = EndScore.GetComponent<Animator>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -63,10 +62,9 @@ public class Player : MonoBehaviour
             deadParticle.GetComponent<ParticleSystem>().Play();
             Destroy(gameObject);
             GameScore.SetActive(false);
+            TapButton.SetActive(false);
             EndBackground.SetActive(true);
             EndBackgroundAnimator.Play("EndBackgroundIn");
-            EndScore.SetActive(true);
-            EndScoreAnimator.Play("EndScoreIn");
             EndScoreText.text = "Твои очки: " + Score.UserScore.ToString();
         }
 
