@@ -23,30 +23,52 @@ public class Global : MonoBehaviour
 
     public void RestartGame()
     {
+        LoadDataToTexts();
         SceneManager.LoadScene("SampleScene");
     }
 
     public void OpenShopPanel()
     {
+        ShopPanel.SetActive(true);
         ShopPanelAnimator.Play("ShopPanelIn");
     }
 
     public void OpenProfilePanel()
     {
-        PlayerData pd = SaveSystem.LoadPlayer();
-        AvailableScoreText.text = "Доступные очки: " + pd.AvailableScore.ToString();
-        TotalScoreText.text = "Всего заработано очков: " + pd.TotalScore.ToString();
+        ProfilePanel.SetActive(true);
+        LoadDataToTexts();
         ProfilePanelAnimator.Play("ProfilePanelIn");
+    }
+
+    IEnumerator CloseProfile()
+    {
+        ProfilePanelAnimator.Play("ProfilePanelOut");
+        yield return new WaitForSeconds(1.5f);
+        ProfilePanel.SetActive(false);
     }
 
     public void CloseProfilePanel()
     {
-        ProfilePanelAnimator.Play("ProfilePanelOut");
+        StartCoroutine(CloseProfile());
+    }
+
+    IEnumerator CloseShop()
+    {
+        ShopPanelAnimator.Play("ShopPanelOut");
+        yield return new WaitForSeconds(1.5f);
+        ShopPanel.SetActive(false);
     }
 
     public void CloseShopPanel()
     {
-        ShopPanelAnimator.Play("ShopPanelOut");
+        StartCoroutine(CloseShop());   
+    }
+
+    private void LoadDataToTexts()
+    {
+        PlayerData pd = SaveSystem.LoadPlayer();
+        AvailableScoreText.text = "Доступные очки: " + pd.AvailableScore.ToString();
+        TotalScoreText.text = "Всего заработано очков: " + pd.TotalScore.ToString();
     }
 
     public void PauseGame()

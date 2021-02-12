@@ -3,9 +3,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class SaveSystem
 {
+    public static void ResetPlayerData()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/PlayerData.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerData tempData = new PlayerData();
+        tempData.AvailableScore = 0;
+        tempData.TotalScore = 0;
+
+        bf.Serialize(stream, tempData);
+        stream.Close();
+    }
+
     public static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/PlayerData.dat";
