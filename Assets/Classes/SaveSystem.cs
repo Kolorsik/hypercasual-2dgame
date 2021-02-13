@@ -44,12 +44,42 @@ public static class SaveSystem
             PlayerData data = new PlayerData();
             data.TotalScore = 0;
             data.AvailableScore = 0;
+            data.SelectedFigure = new ShopItems(0, 1, "Square");
+            data.BoughtFigures = null;
 
             bf.Serialize(stream, data);
             stream.Close();
 
             return null;
         }
+    }
+
+    public static void ChangeFigure(ShopItems figure)
+    {
+        PlayerData tempData = LoadPlayer();
+        BinaryFormatter bf = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/PlayerData.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        tempData.SelectedFigure = figure;
+
+        bf.Serialize(stream, tempData);
+        stream.Close();
+    }
+
+    public static void ChangeAvaliableScore(int score)
+    {
+        PlayerData tempData = LoadPlayer();
+        BinaryFormatter bf = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/PlayerData.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        tempData.AvailableScore -= score;
+
+        bf.Serialize(stream, tempData);
+        stream.Close();
     }
 
     public static void SaveScore(int score)

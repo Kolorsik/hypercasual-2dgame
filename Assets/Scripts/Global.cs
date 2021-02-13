@@ -10,6 +10,8 @@ public class Global : MonoBehaviour
     public GameObject ProfilePanel;
     public Text AvailableScoreText;
     public Text TotalScoreText;
+    public GameObject Player;
+    public Sprite[] Sprites;
 
     private bool IsPaused = false;
     private Animator ShopPanelAnimator;
@@ -17,8 +19,11 @@ public class Global : MonoBehaviour
 
     void Start()
     {
+        PlayerData pd = SaveSystem.LoadPlayer();
         ShopPanelAnimator = ShopPanel.GetComponent<Animator>();
         ProfilePanelAnimator = ProfilePanel.GetComponent<Animator>();
+        Debug.Log(pd.SelectedFigure.id);
+        Player.GetComponent<SpriteRenderer>().sprite = Sprites[pd.SelectedFigure.id];
     }
 
     public void RestartGame()
