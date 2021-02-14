@@ -50,7 +50,7 @@ public static class SaveSystem
             bf.Serialize(stream, data);
             stream.Close();
 
-            return null;
+            return data;
         }
     }
 

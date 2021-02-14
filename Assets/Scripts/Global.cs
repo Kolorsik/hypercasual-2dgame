@@ -22,8 +22,7 @@ public class Global : MonoBehaviour
         PlayerData pd = SaveSystem.LoadPlayer();
         ShopPanelAnimator = ShopPanel.GetComponent<Animator>();
         ProfilePanelAnimator = ProfilePanel.GetComponent<Animator>();
-        Debug.Log(pd.SelectedFigure.id);
-        Player.GetComponent<SpriteRenderer>().sprite = Sprites[pd.SelectedFigure.id];
+        Player.GetComponent<SpriteRenderer>().sprite = Sprites[pd.SelectedFigure.id].;
     }
 
     public void RestartGame()
