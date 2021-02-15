@@ -45,7 +45,7 @@ public static class SaveSystem
             data.TotalScore = 0;
             data.AvailableScore = 0;
             data.SelectedFigure = new ShopItems(0, 1, "Square");
-            data.BoughtFigures = null;
+            data.BoughtFigures = new List<ShopItems>() { new ShopItems(0, 1, "Square") };
 
             bf.Serialize(stream, data);
             stream.Close();
@@ -77,6 +77,20 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         tempData.AvailableScore -= score;
+
+        bf.Serialize(stream, tempData);
+        stream.Close();
+    }
+
+    public static void ChangeBoughtFigures(ShopItems figure)
+    {
+        PlayerData tempData = LoadPlayer();
+        BinaryFormatter bf = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/PlayerData.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        tempData.BoughtFigures.Add(figure);
 
         bf.Serialize(stream, tempData);
         stream.Close();

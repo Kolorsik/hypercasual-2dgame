@@ -21,10 +21,12 @@ public class ShopItems
 
     public List<ShopItems> GetAllItems()
     {
-        ShopItems square = new ShopItems(0, 0, "Square");
-        ShopItems circle = new ShopItems(1, 1, "Circle");
-        ShopItems polygon = new ShopItems(2, 1, "Polygon");
-        ShopItems star = new ShopItems(3, 1, "Star");
-        return new List<ShopItems>() { square, circle, polygon, star };
+        return new List<ShopItems>()
+        {
+            new ShopItems(0, 0, "Square"),
+            new ShopItems(1, 1, "Circle"),
+            new ShopItems(2, 1, "Polygon"),
+            new ShopItems(3, 1, "Star")
+        };
     }
 }
