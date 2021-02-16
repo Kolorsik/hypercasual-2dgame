@@ -12,6 +12,10 @@ public class Global : MonoBehaviour
     public Text TotalScoreText;
     public GameObject Player;
     public Sprite[] Sprites;
+    public GameObject StartScreen;
+    public GameObject SpawnEnemy;
+    public GameObject TapButton;
+
 
     private bool IsPaused = false;
     private Animator ShopPanelAnimator;
@@ -25,6 +29,13 @@ public class Global : MonoBehaviour
         Player.GetComponent<SpriteRenderer>().sprite = Sprites[pd.SelectedFigure.id];
     }
 
+    public void StartGame()
+    {
+        TapButton.SetActive(true);
+        StartScreen.SetActive(false);
+        Player.SetActive(true);
+        SpawnEnemy.GetComponent<Spawn>().enabled = true;
+    }
     public void RestartGame()
     {
         LoadDataToTexts();
