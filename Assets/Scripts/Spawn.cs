@@ -19,6 +19,11 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(Score.UserScore % 10 == 0)
+        {
+            SpawnRate -= 0.1f;
+        }
+
         Timer -= Time.deltaTime;
         if (Timer <= 0f)
         {
