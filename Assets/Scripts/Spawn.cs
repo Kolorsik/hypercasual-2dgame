@@ -19,11 +19,6 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Score.UserScore % 10 == 0)
-        {
-            SpawnRate -= 0.1f;
-        }
-
         Timer -= Time.deltaTime;
         if (Timer <= 0f)
         {
@@ -51,7 +46,7 @@ public class Spawn : MonoBehaviour
                         break;
                     }
             }
-            tempEnemy.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+            tempEnemy.GetComponent<Renderer>().material.color = new Color(236/255f, 9/255f, 126/255f);//Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
             Timer = SpawnRate;
         }
     }

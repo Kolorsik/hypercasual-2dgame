@@ -16,6 +16,15 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        /*
+        if (UserScore % 10 == 0)
+        {
+            Spawn.SpawnRate -= 0.1f;
+            EnemyIdle.Speed += 0.005f;
+            EnemyRotation.Speed += 0.005f;
+            EnemySlowRotation.Speed += 0.005f;
+        }
+        */
         ScoreText.text = UserScore.ToString();
     }
 }
