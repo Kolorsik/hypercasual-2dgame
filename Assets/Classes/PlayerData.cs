@@ -12,6 +12,6 @@ public class PlayerData
     public int TotalScore;
     public List<ShopItems> BoughtFigures;
     public ShopItems SelectedFigure;
-
+    public Color SelectedColor;
     public PlayerData() { }
 }

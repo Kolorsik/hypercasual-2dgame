@@ -46,6 +46,7 @@ public static class SaveSystem
             data.AvailableScore = 0;
             data.SelectedFigure = new ShopItems(0, 1, "Square");
             data.BoughtFigures = new List<ShopItems>() { new ShopItems(0, 1, "Square") };
+            data.SelectedColor = Color.yellow;
 
             bf.Serialize(stream, data);
             stream.Close();

@@ -8,9 +8,29 @@ public class Shop : MonoBehaviour
 {
     public Text PriceText;
     public Text ButtonText;
+    public RawImage TestColor;
 
     private List<ShopItems> shopItems;
     private ShopItems SelectedFigure;
+    private float R = 0f, G = 0f, B = 0f;
+
+    public void OnValueChangedR(float value)
+    {
+        R = value;
+        TestColor.color = new Color(R / 255f, G / 255f, B / 255f);
+    }
+
+    public void OnValueChangedG(float value)
+    {
+        G = value;
+        TestColor.color = new Color(R / 255f, G / 255f, B / 255f);
+    }
+
+    public void OnValueChangedB(float value)
+    {
+        B = value;
+        TestColor.color = new Color(R / 255f, G / 255f, B / 255f);
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -27,6 +27,7 @@ public class Global : MonoBehaviour
         ShopPanelAnimator = ShopPanel.GetComponent<Animator>();
         ProfilePanelAnimator = ProfilePanel.GetComponent<Animator>();
         Player.GetComponent<SpriteRenderer>().sprite = Sprites[pd.SelectedFigure.id];
+        Player.GetComponent<Renderer>().material.color = pd.SelectedColor;
     }
 
     public void StartGame()

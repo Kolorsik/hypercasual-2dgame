@@ -9,6 +9,7 @@ public class Spawn : MonoBehaviour
     public static int CountEnemy;
 
     private float Timer;
+    private float R, G, B;
 
 
     void Start()
@@ -46,7 +47,7 @@ public class Spawn : MonoBehaviour
                         break;
                     }
             }
-            tempEnemy.GetComponent<Renderer>().material.color = new Color(236/255f, 9/255f, 126/255f);//Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+            tempEnemy.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
             Timer = SpawnRate;
         }
     }
