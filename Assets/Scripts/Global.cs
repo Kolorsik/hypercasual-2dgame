@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Global : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class Global : MonoBehaviour
         ShopPanelAnimator = ShopPanel.GetComponent<Animator>();
         ProfilePanelAnimator = ProfilePanel.GetComponent<Animator>();
         Player.GetComponent<SpriteRenderer>().sprite = Sprites[pd.SelectedFigure.id];
-        Player.GetComponent<Renderer>().material.color = pd.SelectedColor;
+        Player.GetComponent<Renderer>().material.color = new Color(pd.SelectedColor[0] / 255f, pd.SelectedColor[1] / 255f, pd.SelectedColor[2] / 255f);
     }
 
     public void StartGame()

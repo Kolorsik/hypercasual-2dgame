@@ -22,6 +22,22 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void ChangeColor(float r, float g, float b)
+    {
+        PlayerData tempData = LoadPlayer();
+        BinaryFormatter bf = new BinaryFormatter();
+
+        string path = Application.persistentDataPath + "/PlayerData.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        tempData.SelectedColor[0] = r;
+        tempData.SelectedColor[1] = g;
+        tempData.SelectedColor[2] = b;
+
+        bf.Serialize(stream, tempData);
+        stream.Close();
+    }
+
     public static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/PlayerData.dat";
@@ -46,7 +62,10 @@ public static class SaveSystem
             data.AvailableScore = 0;
             data.SelectedFigure = new ShopItems(0, 1, "Square");
             data.BoughtFigures = new List<ShopItems>() { new ShopItems(0, 1, "Square") };
-            data.SelectedColor = Color.yellow;
+            data.SelectedColor = new float[3];
+            data.SelectedColor[0] = 10f;
+            data.SelectedColor[1] = 255f;
+            data.SelectedColor[2] = 10f;
 
             bf.Serialize(stream, data);
             stream.Close();

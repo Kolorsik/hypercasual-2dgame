@@ -32,6 +32,11 @@ public class Shop : MonoBehaviour
         TestColor.color = new Color(R / 255f, G / 255f, B / 255f);
     }
 
+    public void ChangePlayerColor()
+    {
+        SaveSystem.ChangeColor(R, G, B);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
